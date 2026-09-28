@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>あっとくん応援団 ☆ 非公式ファンサイト</title>
+<meta name="description" content="AMPTAKのあっとくんを応援する非公式ファンサイト。イケボの神の魅力、おすすめ動画、はじめての人向けガイドまで。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo pop" href="#top"><span class="at">@</span>あっとくん応援団</a>
+  <div class="nav-links">
+    <a href="#profile">プロフィール</a>
+    <a href="#charm">好きなとこ</a>
+    <a href="#guide">はじめての人へ</a>
+    <a href="#music">歌</a>
+    <a href="#library">動画</a>
+    <a href="#board">応援ボード</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<!-- 公式MVのサビ30秒をYouTube埋め込みで順番に流す（音なしで自動再生） -->
+<header class="hero" id="top">
+  <div class="stage">
+    <div class="stage-video" aria-hidden="true">
+      <img class="poster" id="heroPoster" alt="">
+      <div class="yt-cover"><div id="heroPlayer"></div></div>
+    </div>
+    <div class="stage-shade"></div>
+
+    <div class="stage-text">
+      <span class="sticker">🎧 非公式ファンサイト</span>
+      <h1 class="pop">
+        <span class="line">世界に届け、</span>
+        <span class="line name"><span>あ</span><span>っ</span><span>と</span><span>く</span><span>ん</span></span>
+        <span class="line">の<em>イケボ</em>！</span>
+      </h1>
+      <p class="lead">
+        AMPTAK（アンプタック）の<strong>あっとくん</strong>を<br>
+        ゆるっと全力で応援する、ファンの秘密基地だよ。
+      </p>
+      <div class="hero-btns">
+        <a class="btn" href="#guide">はじめての人はこちら</a>
+        <a class="btn ghost" href="https://www.youtube.com/@AtToKun" target="_blank" rel="noopener">▶ チャンネルへ</a>
+      </div>
+    </div>
+
+    <div class="stage-ui">
+      <div class="now">
+        <span class="now-label pop">NOW PLAYING</span>
+        <span class="now-title pop" id="heroTitle"></span>
+        <div class="seg"><i id="heroBar"></i></div>
+      </div>
+      <div class="stage-btns">
+        <div class="mv-dots" id="heroDots"></div>
+        <button class="ctrl" id="heroSound" type="button">🔇 音を出す</button>
+        <button class="ctrl red" id="heroFull" type="button">▶ フルで見る</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 流れる帯 -->
+<div class="marquee" aria-hidden="true">
+  <div class="track pop">
+    <span>圧倒的低音</span><b>✦</b><span>イケボの神</span><b>@</b><span>AMPTAK</span><b>✦</b><span>赤と青のオッドアイ</span><b>♪</b><span>歌ってみた</span><b>✦</b><span>ゲーム実況</span><b>@</b><span>サムネ職人</span><b>♪</b>
+    <span>圧倒的低音</span><b>✦</b><span>イケボの神</span><b>@</b><span>AMPTAK</span><b>✦</b><span>赤と青のオッドアイ</span><b>♪</b><span>歌ってみた</span><b>✦</b><span>ゲーム実況</span><b>@</b><span>サムネ職人</span><b>♪</b>
+  </div>
+</div>
+
+<!-- ================= PROFILE ================= -->
+<section class="block" id="profile">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <div class="peek" data-chibi="wink,wave"></div>
+      <h2 class="pop"><span>あっとくんってどんな人？</span></h2>
+      <p>はじめましての人向け・ファン手作りのプロフィールカード！</p>
+    </div>
+
+    <div class="profile reveal">
+      <div class="card-holo">
+        <div class="card">
+          <div class="card-top">
+            <span class="card-no">No.@</span>
+            <span class="card-rare pop">SSR</span>
+          </div>
+          <div class="card-art" data-chibi="smile,heart"></div>
+          <div class="card-name pop">あっと</div>
+          <div class="card-sub">AMPTAK / STPR</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <dl class="facts">
+          <div><dt>所属</dt><dd>歌い手グループ <strong>AMPTAK</strong>（STPR）</dd></div>
+          <div><dt>キャッチコピー</dt><dd>イケボの神（チャンネル紹介より）</dd></div>
+          <div><dt>トレードマーク</dt><dd>赤髪、<span class="red">赤</span>と<span class="blue">青</span>のオッドアイ、@ピアス</dd></div>
+          <div><dt>声</dt><dd>「圧倒的低音」と呼ばれる、深くて甘い低音ボイス</dd></div>
+          <div><dt>活動</dt><dd>歌ってみた、オリジナルMV、ゲーム実況、雑談配信</dd></div>
+          <div><dt>チャンネル</dt><dd><a href="https://www.youtube.com/@AtToKun" target="_blank" rel="noopener">@AtToKun</a>（歌も配信もここで見られるよ）</dd></div>
+        </dl>
+
+        <div class="gauges">
+          <p class="gauge-title pop">ファン調べ☆あっとくんパラメータ</p>
+          <div class="gauge"><span>低音ボイス</span><div class="bar"><i style="--v:100%"></i></div><b>MAX</b></div>
+          <div class="gauge"><span>イケボ度</span><div class="bar"><i style="--v:100%"></i></div><b>∞</b></div>
+          <div class="gauge"><span>ゲーム愛</span><div class="bar"><i style="--v:95%"></i></div><b>95</b></div>
+          <div class="gauge"><span>メンバー愛</span><div class="bar"><i style="--v:98%"></i></div><b>98</b></div>
+          <div class="gauge"><span>ゆるさ</span><div class="bar"><i style="--v:88%"></i></div><b>88</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHARM ================= -->
+<section class="block tint-pink" id="charm">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <div class="peek" data-chibi="smile,heart"></div>
+      <h2 class="pop"><span>あっとくんの好きなとこ 5選</span></h2>
+      <p>カードをタップすると裏返るよ 💌</p>
+    </div>
+
+    <div class="charms">
+      <button class="flip reveal" type="button">
+        <div class="flip-in">
+          <div class="face front c-red">
+            <span class="num pop">01</span>
+            <div class="mini" data-chibi="sing,mic"></div>
+            <h3 class="pop">圧倒的低音ボイス</h3>
+            <span class="tap">TAP ↻</span>
+          </div>
+          <div class="face back">
+            <p>「圧倒的低音歌い手」って自分で言っちゃうくらい、低くて深い声が武器。イヤホンで聴くと耳が溶けるので要注意！</p>
+            <a class="mini-link" data-play="D-CJaAv33Ls">▶ 低音を浴びる</a>
+          </div>
+        </div>
+      </button>
+
+      <button class="flip reveal" type="button">
+        <div class="flip-in">
+          <div class="face front c-blue">
+            <span class="num pop">02</span>
+            <div class="mini" data-chibi="smug,"></div>
+            <h3 class="pop">オリジナルMVがかっこいい</h3>
+            <span class="tap">TAP ↻</span>
+          </div>
+          <div class="face back">
+            <p>「ドープ」「マスカレードヴェール」「HUE」…オリジナル曲のMVがどれも世界観たっぷり。配信とのギャップにやられる。</p>
+            <a class="mini-link" data-play="zHnhavpcXFk">▶ ドープを見る</a>
+          </div>
+        </div>
+      </button>
+
+      <button class="flip reveal" type="button">
+        <div class="flip-in">
+          <div class="face front c-yellow">
+            <span class="num pop">03</span>
+            <div class="mini" data-chibi="wow,game"></div>
+            <h3 class="pop">ゲーム配信のリアクション</h3>
+            <span class="tap">TAP ↻</span>
+          </div>
+          <div class="face back">
+            <p>壺おじ耐久で「全然イライラしてないよ、まっじで」。タルコフもトルネコも、全力で楽しむ姿がかわいい。</p>
+            <a class="mini-link" data-play="KACKoBy60Ao">▶ 壺おじ耐久を見る</a>
+          </div>
+        </div>
+      </button>
+
+      <button class="flip reveal" type="button">
+        <div class="flip-in">
+          <div class="face front c-purple">
+            <span class="num pop">04</span>
+            <div class="mini" data-chibi="smile,pen"></div>
+            <h3 class="pop">ものづくりが得意</h3>
+            <span class="tap">TAP ↻</span>
+          </div>
+          <div class="face back">
+            <p>リレー生放送で「メンバーのサムネ制作屋さん」をやっちゃうクリエイター気質。仲間のために手を動かせるのが素敵。</p>
+            <a class="mini-link" data-play="d7-nMtN8Iyk">▶ サムネ屋さんを見る</a>
+          </div>
+        </div>
+      </button>
+
+      <button class="flip reveal" type="button">
+        <div class="flip-in">
+          <div class="face front c-mint">
+            <span class="num pop">05</span>
+            <div class="mini" data-chibi="sleepy,"></div>
+            <h3 class="pop">深夜のゆる雑談</h3>
+            <span class="tap">TAP ↻</span>
+          </div>
+          <div class="face back">
+            <p>眠そうな声でだらだら話す雑談配信は、寝る前のお守り。低音×ゆるさ＝最強の癒やし。</p>
+            <a class="mini-link" data-play="fahhQnYJEug">▶ 雑談を聴く</a>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GUIDE ================= -->
+<section class="block" id="guide">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <div class="peek" data-chibi="smile,wave"></div>
+      <h2 class="pop"><span>はじめてのあっとくん</span></h2>
+      <p>何から見ればいい？って人は、この順番がおすすめ！</p>
+    </div>
+
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step-no pop">STEP 1</span>
+        <div class="thumb" data-play="zHnhavpcXFk"></div>
+        <h3>まずはMVで「かっこいい」を知る</h3>
+        <p>オリジナル曲「ドープ」。世界観と歌声にまず引き込まれて。</p>
+      </li>
+      <li class="step reveal">
+        <span class="step-no pop">STEP 2</span>
+        <div class="thumb" data-play="D-CJaAv33Ls"></div>
+        <h3>歌ってみたで「低音」に溺れる</h3>
+        <p>「圧倒的低音歌い手が モエチャッカファイア 歌ってみた」。タイトル通りの破壊力。</p>
+      </li>
+      <li class="step reveal">
+        <span class="step-no pop">STEP 3</span>
+        <div class="thumb" data-play="NJRaJKgJ2gc"></div>
+        <h3>企画で「おもしろさ」にハマる</h3>
+        <p>「STPR面接」。イケボすぎる面接の様子にニヤニヤが止まらない。</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= MUSIC ================= -->
+<section class="block tint-dark" id="music">
+  <div class="inner">
+    <div class="sec-head light reveal">
+      <div class="peek" data-chibi="sing,mic"></div>
+      <h2 class="pop"><span>MUSIC</span></h2>
+      <p>オリジナルMVと歌ってみたセレクション 🎤</p>
+    </div>
+
+    <div class="mv-feature reveal">
+      <div class="thumb big" data-play="zHnhavpcXFk"></div>
+      <div class="mv-list" id="mvList"></div>
+    </div>
+
+    <h3 class="rail-title pop">歌ってみた ♪ <small>← 横にスクロールしてね →</small></h3>
+    <div class="rail" id="coverRail"></div>
+  </div>
+</section>
+
+<!-- ================= LIBRARY ================= -->
+<section class="block" id="library">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <div class="peek" data-chibi="wow,game"></div>
+      <h2 class="pop"><span>動画ライブラリ</span></h2>
+      <p>気分で選んでね。迷ったらおみくじで！</p>
+    </div>
+
+    <div class="lib-tools reveal">
+      <div class="filters" id="filters">
+        <button class="on" data-cat="all">ぜんぶ</button>
+        <button data-cat="song">🎤 歌</button>
+        <button data-cat="game">🎮 ゲーム</button>
+        <button data-cat="collab">🤝 コラボ</button>
+        <button data-cat="fun">😆 おもしろ</button>
+      </div>
+      <button class="btn omikuji" id="omikuji">🎲 動画おみくじ</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <div class="center"><a class="btn" href="https://www.youtube.com/@AtToKun/videos" target="_blank" rel="noopener">もっと見る → YouTube</a></div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="block tint-blue" id="gallery">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <div class="peek" data-chibi="smile,pen"></div>
+      <h2 class="pop"><span>ファンアート広場</span></h2>
+      <p>いろんな表情のあっとくん。みんなのイラストもここに飾りたいな</p>
+    </div>
+    <div class="gallery">
+      <figure class="g reveal" style="--bg:#ffe4e8"><div data-chibi="sing,mic"></div><figcaption>歌ってるとき</figcaption></figure>
+      <figure class="g reveal" style="--bg:#e3ebff"><div data-chibi="smug,"></div><figcaption>ドヤ顔</figcaption></figure>
+      <figure class="g reveal" style="--bg:#fff3c4"><div data-chibi="wow,game"></div><figcaption>ゲーム中</figcaption></figure>
+      <figure class="g reveal" style="--bg:#efe6ff"><div data-chibi="sleepy,"></div><figcaption>深夜の雑談</figcaption></figure>
+      <figure class="g reveal" style="--bg:#e0fbef"><div data-chibi="wink,heart"></div><figcaption>ファンサ</figcaption></figure>
+      <figure class="g empty reveal"><span>＋</span><figcaption>イラスト<br>募集中！</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BOARD ================= -->
+<section class="block" id="board">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <div class="peek" data-chibi="wink,heart"></div>
+      <h2 class="pop"><span>応援メッセージボード</span></h2>
+      <p>あっとくんへの気持ちを付箋に書いて貼ろう 📝（試作版：このブラウザにだけ保存されるよ）</p>
+    </div>
+    <form class="board-form" id="boardForm">
+      <input id="msg" maxlength="60" placeholder="例）いつも低音に癒やされてます！" required>
+      <button class="btn" type="submit">貼る！</button>
+    </form>
+    <div class="notes" id="notes"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="foot-chibi" data-chibi="smile,wave"></div>
+  <p class="pop foot-logo"><span class="at">@</span>あっとくん応援団</p>
+  <p>このサイトは、ファンが個人で運営している<strong>非公式</strong>の応援サイトです。<br>
+  あっとくんご本人、AMPTAK、STPRとは関係ありません。</p>
+  <p>イラストはファンアートです。動画の権利はそれぞれの権利者にあります。</p>
+  <p><a href="https://www.youtube.com/@AtToKun" target="_blank" rel="noopener">あっと【AMPTAK】公式YouTubeチャンネル</a></p>
+</footer>
+
+<!-- 動画プレイヤー（モーダル） -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="とじる">×</button>
+    <div class="modal-player" id="player"></div>
+    <p class="modal-title" id="modalTitle"></p>
+  </div>
+</div>
+
+<script src="chibi.js"></script>
+<script src="hero.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

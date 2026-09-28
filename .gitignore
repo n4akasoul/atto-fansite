@@ -1,0 +1,4 @@
+.DS_Store
+.nimbalyst/
+.omc/
+node_modules/
