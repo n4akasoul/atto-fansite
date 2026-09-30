@@ -1,18 +1,18 @@
-// トップ：公式MVのサビ30秒を順番に流す（YouTube IFrame API）
-// start/end は YouTube の「よく再生されている部分」から選んだ 30 秒
+// トップ：公式MVの見どころ10秒を順番につなげて流す（YouTube IFrame API）
+// start/end は YouTube の「よく再生されている部分」から選んだ 10 秒
 const HERO_MVS = [
-  { id: 'zHnhavpcXFk', t: 'ドープ',               start: 122, end: 152 },
-  { id: 'CDcsmYSZQFQ', t: 'マスカレードヴェール', start: 161, end: 191 },
-  { id: 'QBCN8CHZWbA', t: 'マーダーホリック',     start: 99,  end: 129 },
-  { id: 'x5N3MCtKV8M', t: 'シークレットディナー', start: 166, end: 196 },
-  { id: 'o7uvrm9CwY8', t: 'HUE',                  start: 156, end: 186 },
-  { id: 'RRb2VfqyL_E', t: 'A2A',                  start: 129, end: 159 },
+  { id: 'zHnhavpcXFk', t: 'ドープ',               start: 137, end: 147 },
+  { id: 'CDcsmYSZQFQ', t: 'マスカレードヴェール', start: 164, end: 174 },
+  { id: 'QBCN8CHZWbA', t: 'マーダーホリック',     start: 102, end: 112 },
+  { id: 'x5N3MCtKV8M', t: 'シークレットディナー', start: 177, end: 187 },
+  { id: 'o7uvrm9CwY8', t: 'HUE',                  start: 170, end: 180 },
+  { id: 'RRb2VfqyL_E', t: 'A2A',                  start: 131, end: 141 },
 ];
 
 (() => {
   const $ = id => document.getElementById(id);
   const poster = $('heroPoster'), title = $('heroTitle'), bar = $('heroBar');
-  const dots = $('heroDots'), soundBtn = $('heroSound');
+  const dots = $('heroDots'), soundBtn = $('heroSound'), fader = $('heroFader');
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let idx = 0, yt = null, ready = false, muted = true;
   let switching = false; // 切り替え中に届く古い「終了」イベントを無視する
@@ -29,7 +29,10 @@ const HERO_MVS = [
     bar.style.width = '0';
     if (ready) {
       switching = true;
+      fader.classList.add('on');
       yt.loadVideoById({ videoId: m.id, startSeconds: m.start, endSeconds: m.end });
+      // 広告が入っても隠し続けないよう、フェードは短時間で必ず外す
+      setTimeout(() => fader.classList.remove('on'), 900);
     }
   }
 
@@ -56,13 +59,15 @@ const HERO_MVS = [
     if (ready && !document.getElementById('modal').classList.contains('open')) yt.playVideo();
   }).observe(document.getElementById('modal'), { attributes: true, attributeFilter: ['class'] });
 
-  // 30秒のどこまで進んだかをバーで表示
+  // 10秒のどこまで進んだかをバーで表示し、終わる直前にフェードアウトする
   setInterval(() => {
     if (!ready || typeof yt.getCurrentTime !== 'function') return;
     const m = HERO_MVS[idx];
-    const p = Math.min(1, Math.max(0, (yt.getCurrentTime() - m.start) / (m.end - m.start)));
+    const t = yt.getCurrentTime();
+    const p = Math.min(1, Math.max(0, (t - m.start) / (m.end - m.start)));
     bar.style.width = p * 100 + '%';
-  }, 250);
+    if (!switching && t >= m.end - 0.7 && t < m.end + 1) fader.classList.add('on');
+  }, 100);
 
   show(0);
   if (reduceMotion) return; // 動きを減らす設定の人には自動再生しない（ポスター画像のみ）
@@ -78,7 +83,7 @@ const HERO_MVS = [
       events: {
         onReady: e => { ready = true; e.target.mute(); e.target.playVideo(); },
         onStateChange: e => {
-          if (e.data === YT.PlayerState.PLAYING) { switching = false; poster.classList.add('hide'); }
+          if (e.data === YT.PlayerState.PLAYING) { switching = false; poster.classList.add('hide'); fader.classList.remove('on'); }
           if (e.data === YT.PlayerState.ENDED && !switching) show(idx + 1); // 次のMVへ
         },
       },
