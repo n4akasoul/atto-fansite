@@ -15,7 +15,7 @@ python3 -m http.server 8765
 
 - `index.html` … ページ本体
 - `style.css` … 見た目
-- `hero.js` … トップの MV ステージ（公式 MV のサビ 30 秒を順番に再生）
+- `hero.js` … トップの MV ステージ（公式 MV の見どころ 10 秒をつなげて再生）
 - `main.js` … 動画一覧、モーダルプレイヤー、応援ボードなど
 - `chibi.js` … あっとくんのデフォルメファンアート（SVG をコードで描画）
 
